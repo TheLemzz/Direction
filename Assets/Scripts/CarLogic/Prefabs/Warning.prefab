@@ -290,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8593912426595429014}
-  - component: {fileID: 455441315199259308}
+  - component: {fileID: 2030671149293147922}
   m_Layer: 5
   m_Name: Warning
   m_TagString: Untagged
@@ -320,7 +320,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &455441315199259308
+--- !u!114 &2030671149293147922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,8 +329,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8152926733666048922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bacbd9a5b1fdd14ea0819a4caa21c5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 563637e8b93a1844f8542b0e90a91f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 7861805142975085188}
-  _image: {fileID: 0}
+  _image: {fileID: 2092621550366448088}

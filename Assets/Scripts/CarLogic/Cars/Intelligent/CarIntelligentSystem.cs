@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(CarController), typeof(CarSpeedLimiter), typeof(Car))]
 public sealed class CarIntelligentSystem : MonoBehaviour
 {
-    [SerializeField] private WarningAllertHolder _warningAllertHolder;
+    [SerializeField] private WarningAlertHolder _warningAllertHolder;
     [SerializeField] private CarCameraRecorder _cameraRecorder;
     [SerializeField] private TextMeshProUGUI _roadQualityText;
     [SerializeField] private bool _detect = true;
@@ -87,14 +87,14 @@ public sealed class CarIntelligentSystem : MonoBehaviour
         StartCoroutine(UpdateRoadQualityCoroutine());
     }
 
-    public void SendWarningAllert(string description)
+    public void SendWarningAlert(string description)
     {
-        _warningAllertHolder.AddWarningAllert(description);
+        _warningAllertHolder.AddWarningAlert(description);
     }
 
     public void DeleteWarningWithDescription(string data = SPEED_WARNING)
     {
-        _warningAllertHolder.TryRemoveWarningAllert(data);
+        _warningAllertHolder.TryRemoveWarningAlert(data);
     }
 
     private void FixedUpdate()
@@ -114,7 +114,7 @@ public sealed class CarIntelligentSystem : MonoBehaviour
     {
         if (_car.GetCarSpeed() > _carController.AllowedSpeed && !_warningAllertHolder.IsHasWarningWithDescription(SPEED_WARNING))
         {
-            SendWarningAllert(SPEED_WARNING);
+            SendWarningAlert(SPEED_WARNING);
         }
     }
 

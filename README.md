@@ -250,6 +250,62 @@ private void OnWeatherChanged(bool started, WeatherType weatherType)
 }
 ```
  
+ ### WarningAlertHolder.cs:
+![Container](https://i.imgur.com/zgxCyFP.png)
+**WarningAlertHolder.cs** - MonoBehaviour, реализующий удобный вывод предупреждений на Canvas пользователя.
+
+Методы:
+```csharp
+public WarningAlert AddWarningAlert(string description)
+```
+Добавляет новое предупреждение с указанным описанием на экран. Возвращает созданный *WarningAlert*. Может быть создано только одно предупреждение с указанным описанием.
+
+```csharp
+public void TryRemoveWarningAlert(string data)
+```
+Удаляет предупреждение, у которого есть данное описание, если оно есть в списке.
+
+```csharp
+public bool IsHasWarningWithDescription(string description)
+```
+Возвращает true, если в списке есть предупреждение с указанным описанием.
+
+Примеры использования:
+```csharp
+private const string SPEED_WARNING = "Скорость превышена!";
+
+private void FixedUpdate()
+{
+    if (!init) return;
+
+    if (_carController.IgonreRule) CheckSpeed();
+
+    if (_car.GetCarSpeed() < _carController.AllowedSpeed)
+    {
+        DeleteWarningWithDescription();
+    }
+}
+
+private void CheckSpeed()
+{
+    if (_car.GetCarSpeed() > _carController.AllowedSpeed)
+    {
+        SendWarningAlert(SPEED_WARNING);
+    }
+}
+
+public void SendWarningAlert(string description)
+{
+    _warningAllertHolder.AddWarningAlert(description);
+}
+
+public void DeleteWarningWithDescription(string data = SPEED_WARNING)
+{
+    _warningAllertHolder.TryRemoveWarningAlert(data);
+}
+```
+Удобно записать описание предупреждения в const, а затем использовать ее для удаления или создания предупреждения.
+
 
 ### Построение путей автомобилей-ботов:
 ![пути](https://i.imgur.com/dON06IM.png)

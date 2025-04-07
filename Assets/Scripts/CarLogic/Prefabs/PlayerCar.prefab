@@ -11609,11 +11609,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6281a21f09bd41441b7f3c1904b1491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sendAllert: 1
-  _forceStop: 0
-  _car: {fileID: 5947142619300947719}
-  _aiCar: {fileID: 0}
-  _warningSystem: {fileID: 564698906319508875}
+  sendAlert: 0
+  forceStop: 0
+  playerCar: {fileID: 0}
+  aiCar: {fileID: 0}
+  warningSystem: {fileID: 0}
 --- !u!1 &4591414651735569596
 GameObject:
   m_ObjectHideFlags: 0
@@ -12463,7 +12463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156fc5dc39b8f6e4385172fbf4b1fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allertPrefab: {fileID: 455441315199259308, guid: 850209d878d885e439c3f2a2d7136432, type: 3}
+  _alertPrefab: {fileID: 2030671149293147922, guid: 850209d878d885e439c3f2a2d7136432, type: 3}
 --- !u!114 &3177619726937982155
 MonoBehaviour:
   m_ObjectHideFlags: 0

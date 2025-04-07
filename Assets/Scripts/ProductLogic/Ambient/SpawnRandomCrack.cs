@@ -37,7 +37,7 @@ public class SpawnRandomCrack : MonoBehaviour
             if (randomNumber < cumulativeChance)
             {
 
-                Instantiate(crackChance.Crack, _positions.PickRandomElement().position, crackChance.Crack.transform.rotation);
+                Instantiate(crackChance.Crack, _positions.PickRandomElement().position.AddY(0.001f), crackChance.Crack.transform.rotation);
                 return;
             }
         }

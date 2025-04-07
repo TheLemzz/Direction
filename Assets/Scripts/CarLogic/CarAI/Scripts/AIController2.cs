@@ -50,6 +50,8 @@ public class AIController2 : MonoBehaviour
 
     private void Update()
     {
+        agent.isStopped = cart.isBrake;
+
         ProgressTracker();
 
         _localTarget = transform.InverseTransformPoint(agent.transform.position);

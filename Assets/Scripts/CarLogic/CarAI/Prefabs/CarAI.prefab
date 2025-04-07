@@ -1019,11 +1019,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6281a21f09bd41441b7f3c1904b1491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sendAllert: 0
-  _forceStop: 1
-  _car: {fileID: 0}
-  _aiCar: {fileID: 3622073017265411252}
-  _warningSystem: {fileID: 0}
+  sendAlert: 0
+  forceStop: 0
+  playerCar: {fileID: 0}
+  aiCar: {fileID: 0}
+  warningSystem: {fileID: 0}
 --- !u!1 &5411409863717252680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,11 +1139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6281a21f09bd41441b7f3c1904b1491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sendAllert: 0
-  _forceStop: 1
-  _car: {fileID: 0}
-  _aiCar: {fileID: 3622073017265411252}
-  _warningSystem: {fileID: 0}
+  sendAlert: 0
+  forceStop: 1
+  playerCar: {fileID: 0}
+  aiCar: {fileID: 3622073017265411252}
+  warningSystem: {fileID: 0}
 --- !u!1 &7240491491032926099
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ public class PeopleDetector : MonoBehaviour
                     string text = File.ReadAllText(OUTPUT_FILE_PATH);
                     if (float.TryParse(text.Replace('.', ','), out float boolean) && boolean == 1)
                     {
-                        _intelligentSystem.SendWarningAllert(WARNING);
+                        _intelligentSystem.SendWarningAlert(WARNING);
                     }
                     else
                     {

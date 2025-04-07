@@ -38,11 +38,11 @@ public sealed class CarSpeedLimiter : MonoBehaviour
             {
                 case WeatherType.Rain:
                     _carController.AllowedSpeed -= _coefficentRain;
-                    _intelligentSystem.SendWarningAllert(RAIN_WARNING);
+                    _intelligentSystem.SendWarningAlert(RAIN_WARNING);
                     break;
                 case WeatherType.Fog:
                     _carController.AllowedSpeed -= _coefficentFog;
-                    _intelligentSystem.SendWarningAllert(FOG_WARNING);
+                    _intelligentSystem.SendWarningAlert(FOG_WARNING);
                     break;
                 default:
                     return;
