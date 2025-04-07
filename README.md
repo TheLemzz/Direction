@@ -96,7 +96,7 @@
 Алгоритм работы прост: достаточно добавить в список скриптов  Python новый элемент, указать необходимые данные и всё - PyModule запустит их в указанном порядке и сам выключит, если нужно.
 
 Пример обработки файла остановки на Python:
-
+```python
     if os.path.exists(datas_folder):  
         while True:  
             for filename in os.listdir(datas_folder):  
@@ -107,14 +107,14 @@
                     with open(output_file, 'w') as f: f.write('0')  
                     os.remove(os.path.join(datas_folder, filename))  
                     break
-
+```
 PyModule реализует **Singleton.**
 
     public static PyModule Instance => _instance;
  К PyModule можно обратиться через PyModule.Instance. **Делать это возможно только после запуска компонентов симуляции!**  Самый простой способ - подписаться на событие **EntryPoint.OnApplicationStarted**:
- 
-```
-private void OnEnable()
+
+```csharp
+    private void OnEnable()
     {
         EntryPoint.OnApplicationStarted += OnApplicationStarted;
     }
@@ -129,9 +129,9 @@ private void OnEnable()
 	    PyModule pyModule = PyModule.Instance;
 	    /// other code here...
 	}
- ```
+```
  Возможно, вы захотите внести некую логику в PyModule. Например, в реализации **AIAssistent** PyModule использовался для удобного хранения рабочих путей скрпитов Python:
-
+```csharp
      public string GetDetectorDataPath()
     {
         return @"E:\UnityProjects\siriusinternal\AI\datas_people\";
@@ -141,8 +141,9 @@ private void OnEnable()
     {
         return @"E:\UnityProjects\siriusinternal\AI\datas\";
     }
+```
 И использование:
-
+```csharp
     private IEnumerator Photo()
     {
         WaitForSeconds wait = new(0.4f);
@@ -153,6 +154,7 @@ private void OnEnable()
             _cameraRecorder.MakePhoto(false, PyModule.Instance.GetDetectorDataPath());
         }
     }
+```
 ### CarCameraRecorder.cs:
 ![Camera](https://i.imgur.com/Mq8bkbZ.png)
 CarCameraRecorder - MonoBehaviour, который прикреплен к рабочей камере автомобиля. Можно прикрепить на любую другую камеру.
@@ -164,7 +166,7 @@ CarCameraRecorder - MonoBehaviour, который прикреплен к раб
    directory - путь сохранения снимка.
    
    *Пример использования:*
-
+```csharp
     private IEnumerator SendRoadData()
     {
         WaitForSeconds wait = new(2.2f);
@@ -180,6 +182,7 @@ CarCameraRecorder - MonoBehaviour, который прикреплен к раб
     {
         if (_sendData && _car.GetCarSpeed() >= 3) _cameraRecorder.MakePhoto(true, _module.GetRoadDataPath());
     }
+```
    **AIAssistant**: Данный фрагмент кода каждые 2.2с пытается сделать снимок с камеры дорожного покрытия и сохранить его в рабочей директории скрипта детектирования трещин дороги.
 
 ### Car.cs:
@@ -196,7 +199,7 @@ Car.cs имеет полезный метод - **GetCarSpeed()**, которы�
 **WeatherManager.cs** - класс, ответственный за смену погоды. Он вызывает эвент **OnWeatherChanged**, который первым параметром передает bool-значение, обозначающее, стартовала или закончилась погода, а вторым - enum **WeatherType**, характеризующий тип погоды.
 
 Пример использования:
-
+```csharp
     private void OnEnable()
     {
         WeatherManager.OnWeatherChanged += OnWeatherChanged;
@@ -240,7 +243,7 @@ Car.cs имеет полезный метод - **GetCarSpeed()**, которы�
                 return;
         }
     }
-
+```
  
 
 ### Построение путей автомобилей-ботов:
