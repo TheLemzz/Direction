@@ -97,63 +97,66 @@
 
 Пример обработки файла остановки на Python:
 ```python
-    if os.path.exists(datas_folder):  
-        while True:  
-            for filename in os.listdir(datas_folder):  
-                filepath = os.path.join(datas_folder, filename)  
-                if filename.endswith('.jpg'):  
-                    process_screenshot(filepath)  
-                elif 'stop' in filename:  
-                    with open(output_file, 'w') as f: f.write('0')  
-                    os.remove(os.path.join(datas_folder, filename))  
-                    break
+if os.path.exists(datas_folder):  
+while True:  
+	for filename in os.listdir(datas_folder):  
+		filepath = os.path.join(datas_folder, filename)  
+		if filename.endswith('.jpg'):  
+			process_screenshot(filepath)  
+		elif 'stop' in filename:  
+			with open(output_file, 'w') as f: f.write('0')  
+			os.remove(os.path.join(datas_folder, filename))  
+			break
 ```
 PyModule реализует **Singleton.**
 
-    public static PyModule Instance => _instance;
+```csharp
+public static PyModule Instance => _instance;
+```
+
  К PyModule можно обратиться через PyModule.Instance. **Делать это возможно только после запуска компонентов симуляции!**  Самый простой способ - подписаться на событие **EntryPoint.OnApplicationStarted**:
 
 ```csharp
-    private void OnEnable()
-    {
-        EntryPoint.OnApplicationStarted += OnApplicationStarted;
-    }
+private void OnEnable()
+{
+	EntryPoint.OnApplicationStarted += OnApplicationStarted;
+}
     
-    private void OnDisable()
-    {
+private void OnDisable()
+{
         EntryPoint.OnApplicationStarted -= OnApplicationStarted;
-    }
+}
     
-	private void OnApplicationStarted()
-	{
+private void OnApplicationStarted()
+{
 	    PyModule pyModule = PyModule.Instance;
 	    /// other code here...
-	}
+}
 ```
  Возможно, вы захотите внести некую логику в PyModule. Например, в реализации **AIAssistent** PyModule использовался для удобного хранения рабочих путей скрпитов Python:
 ```csharp
-     public string GetDetectorDataPath()
-    {
-        return @"E:\UnityProjects\siriusinternal\AI\datas_people\";
-    }
+public string GetDetectorDataPath()
+{
+	return @"E:\UnityProjects\siriusinternal\AI\datas_people\";
+}
     
-    public string GetRoadDataPath()
-    {
-        return @"E:\UnityProjects\siriusinternal\AI\datas\";
-    }
+public string GetRoadDataPath()
+{
+	return @"E:\UnityProjects\siriusinternal\AI\datas\";
+}
 ```
 И использование:
 ```csharp
-    private IEnumerator Photo()
-    {
-        WaitForSeconds wait = new(0.4f);
+private IEnumerator Photo()
+{
+	WaitForSeconds wait = new(0.4f);
     
-        while (true)
-        {
-            yield return wait;
-            _cameraRecorder.MakePhoto(false, PyModule.Instance.GetDetectorDataPath());
-        }
-    }
+	while (true)
+	{
+		yield return wait;
+		_cameraRecorder.MakePhoto(false, PyModule.Instance.GetDetectorDataPath());
+	}
+}
 ```
 ### CarCameraRecorder.cs:
 ![Camera](https://i.imgur.com/Mq8bkbZ.png)
@@ -167,21 +170,21 @@ CarCameraRecorder - MonoBehaviour, который прикреплен к раб
    
    *Пример использования:*
 ```csharp
-    private IEnumerator SendRoadData()
-    {
-        WaitForSeconds wait = new(2.2f);
+private IEnumerator SendRoadData()
+{
+	WaitForSeconds wait = new(2.2f);
     
-        while (true)
-        {
-            yield return wait;
-            TrySendRoadData();
-        }
-    }
+	while (true)
+	{
+		yield return wait;
+		TrySendRoadData();
+	}
+}
     
-    private void TrySendRoadData()
-    {
-        if (_sendData && _car.GetCarSpeed() >= 3) _cameraRecorder.MakePhoto(true, _module.GetRoadDataPath());
-    }
+private void TrySendRoadData()
+{
+	if (_sendData && _car.GetCarSpeed() >= 3) _cameraRecorder.MakePhoto(true, _module.GetRoadDataPath());
+}
 ```
    **AIAssistant**: Данный фрагмент кода каждые 2.2с пытается сделать снимок с камеры дорожного покрытия и сохранить его в рабочей директории скрипта детектирования трещин дороги.
 
@@ -191,7 +194,9 @@ CarCameraRecorder - MonoBehaviour, который прикреплен к раб
 **Car.cs** - базовый класс автомобиля для управления им. Можно использовать свои InputHandler для управления автомобилем. В проекте реализовано управление игроком (*PlayerInputHandler.cs*) и управление ботом (*AIController2.cs*)
 Car.cs имеет полезный метод - **GetCarSpeed()**, который возвращает текущую скорость автомобиля(int).
 
-    carSpeedText.text = _car.GetCarSpeed().ToString();
+```csharp
+carSpeedText.text = _car.GetCarSpeed().ToString();
+```
 
 ### WeatherManager.cs:
 ![Weather](https://i.imgur.com/MaJ1bFH.png)
@@ -200,49 +205,49 @@ Car.cs имеет полезный метод - **GetCarSpeed()**, которы�
 
 Пример использования:
 ```csharp
-    private void OnEnable()
-    {
-        WeatherManager.OnWeatherChanged += OnWeatherChanged;
-    }
+private void OnEnable()
+{
+	WeatherManager.OnWeatherChanged += OnWeatherChanged;
+}
     
-    private void OnDisable()
-    {
-        WeatherManager.OnWeatherChanged -= OnWeatherChanged;
-    }
+private void OnDisable()
+{
+	WeatherManager.OnWeatherChanged -= OnWeatherChanged;
+}
     
-    private void OnWeatherChanged(bool started, WeatherType weatherType)
-    {
-        if (started)
-        {
-            switch (weatherType)
-            {
-                case WeatherType.Rain:
-                    _carController.AllowedSpeed -= _coefficentRain;
-                    _intelligentSystem.SendWarningAllert(RAIN_WARNING);
-                    break;
-                case WeatherType.Fog:
-                    _carController.AllowedSpeed -= _coefficentFog;
-                    _intelligentSystem.SendWarningAllert(FOG_WARNING);
-                    break;
-                default:
-                    return;
-            }
-        }
-        else
-        switch (weatherType)
-        {
-            case WeatherType.Rain:
-                _carController.AllowedSpeed += _coefficentRain;
-                _intelligentSystem.DeleteWarningWithDescription(RAIN_WARNING);
-                break;
-            case WeatherType.Fog:
-                _carController.AllowedSpeed += _coefficentFog;
-                _intelligentSystem.DeleteWarningWithDescription(FOG_WARNING);
-                break;
-            default:
-                return;
-        }
-    }
+private void OnWeatherChanged(bool started, WeatherType weatherType)
+{
+	if (started)
+	{
+		switch (weatherType)
+		{
+			case WeatherType.Rain:
+			_carController.AllowedSpeed -= _coefficentRain;
+			_intelligentSystem.SendWarningAllert(RAIN_WARNING);
+			break;
+			case WeatherType.Fog:
+			    _carController.AllowedSpeed -= _coefficentFog;
+			    _intelligentSystem.SendWarningAllert(FOG_WARNING);
+			    break;
+			default:
+			    return;
+		}
+	}
+	else
+	switch (weatherType)
+	{
+		case WeatherType.Rain:
+	                _carController.AllowedSpeed += _coefficentRain;
+	                _intelligentSystem.DeleteWarningWithDescription(RAIN_WARNING);
+	                break;
+            	case WeatherType.Fog:
+	                _carController.AllowedSpeed += _coefficentFog;
+	                _intelligentSystem.DeleteWarningWithDescription(FOG_WARNING);
+	                break;
+            	default:
+                	return;
+	}
+}
 ```
  
 
