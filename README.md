@@ -112,8 +112,9 @@ PyModule реализует **Singleton.**
 
     public static PyModule Instance => _instance;
  К PyModule можно обратиться через PyModule.Instance. **Делать это возможно только после запуска компонентов симуляции!**  Самый простой способ - подписаться на событие **EntryPoint.OnApplicationStarted**:
-
-     private void OnEnable()
+ 
+```
+private void OnEnable()
     {
         EntryPoint.OnApplicationStarted += OnApplicationStarted;
     }
@@ -128,7 +129,7 @@ PyModule реализует **Singleton.**
 	    PyModule pyModule = PyModule.Instance;
 	    /// other code here...
 	}
-
+ ```
  Возможно, вы захотите внести некую логику в PyModule. Например, в реализации **AIAssistent** PyModule использовался для удобного хранения рабочих путей скрпитов Python:
 
      public string GetDetectorDataPath()
