@@ -344,6 +344,7 @@ public void DeleteWarningWithDescription(string data = SPEED_WARNING)
 ![product](https://i.imgur.com/CrkG8my.png)
 
 **ProductInfo** - [ScriptableObject](https://docs.unity3d.com/Manual/class-ScriptableObject.html), позволяющий менять информацию о тестируемом продукте в *Scenes -> MenuScene -> Canvas -> Product*.
+
 ![AIAssistant](https://i.imgur.com/hcZV3qy.png) 
 
 Можно создавать свою информацию о продуктах:
