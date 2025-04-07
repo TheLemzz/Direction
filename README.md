@@ -164,8 +164,9 @@ private IEnumerator Photo()
 CarCameraRecorder - MonoBehaviour, который прикреплен к рабочей камере автомобиля. Можно прикрепить на любую другую камеру.
 
 У этого MonoBehaviour есть полезный метод - **MakePhoto()**, который  делает снимок с камеры и сохраняет его в указанную директорию.
-
+```csharp
     public string MakePhoto(bool forRoad = false, string directory = "")
+```
    forRoad - если true, то снимок будет сделан с другой камеры, направленный вниз на дорожное покрытие. 
    directory - путь сохранения снимка.
    
