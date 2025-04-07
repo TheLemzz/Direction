@@ -67,6 +67,7 @@
 **- С#:**
 Для работы с C#-скриптами рекомендуется [Visual Studio](https://visualstudio.microsoft.com/ru/vs/older-downloads/), который можно установить прямо из Unity:
 ![f](https://i.imgur.com/eshLhwK.png)
+
 Либо можете использовать любой другой удобный Вам редактор.
 
 **- Direction:**
@@ -346,6 +347,7 @@ public void DeleteWarningWithDescription(string data = SPEED_WARNING)
 
 Можно создавать свою информацию о продуктах:
 ![products](https://i.imgur.com/HNDfsn7.png)
+
 Информация о продукте выводится в меню при запуске проекта. 
 
 ## Roadmap
