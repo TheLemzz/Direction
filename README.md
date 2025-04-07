@@ -73,7 +73,7 @@
 **- Direction:**
 Установите сам проект Direction посредством git clone:
 
-    git clone https://gitlab.com/TheLemzzy/direction.git
+    git clone https://github.com/TheLemzz/Direction.git
    Затем, используя ранее установленный UnityHub, добавьте папку проекта в список проектов:
    ![Direction installation](https://i.imgur.com/9y4cqfA.png)
 
