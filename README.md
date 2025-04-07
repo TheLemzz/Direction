@@ -252,6 +252,7 @@ private void OnWeatherChanged(bool started, WeatherType weatherType)
  
  ### WarningAlertHolder.cs:
 ![Container](https://i.imgur.com/zgxCyFP.png)
+
 **WarningAlertHolder.cs** - MonoBehaviour, реализующий удобный вывод предупреждений на Canvas пользователя.
 
 Методы:
