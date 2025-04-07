@@ -119,18 +119,18 @@ public static PyModule Instance => _instance;
 ```csharp
 private void OnEnable()
 {
-	EntryPoint.OnApplicationStarted += OnApplicationStarted;
+EntryPoint.OnApplicationStarted += OnApplicationStarted;
 }
-    
+
 private void OnDisable()
 {
-        EntryPoint.OnApplicationStarted -= OnApplicationStarted;
+EntryPoint.OnApplicationStarted -= OnApplicationStarted;
 }
-    
+
 private void OnApplicationStarted()
 {
-	    PyModule pyModule = PyModule.Instance;
-	    /// other code here...
+PyModule pyModule = PyModule.Instance;
+/// other code here...
 }
 ```
  Возможно, вы захотите внести некую логику в PyModule. Например, в реализации **AIAssistent** PyModule использовался для удобного хранения рабочих путей скрпитов Python:
