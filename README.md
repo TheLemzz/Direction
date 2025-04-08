@@ -326,7 +326,9 @@ public void DeleteWarningWithDescription(string data = SPEED_WARNING)
  *CarAI будет автоматически останавливаться, если спереди будет обнаружен автомобиль.*
 
 В *CarAI -> AIController2* есть поле *Circuit* - в него добавляем созданный путь. Готово!
+
 ![AIController](https://i.imgur.com/uPxZ3GX.png)
+
 У нескольких машин может быть одинаковый маршрут.
 
 ### Построение маршрута пешеходов:
@@ -348,6 +350,7 @@ public void DeleteWarningWithDescription(string data = SPEED_WARNING)
 ![AIAssistant](https://i.imgur.com/hcZV3qy.png) 
 
 Можно создавать свою информацию о продуктах:
+
 ![products](https://i.imgur.com/HNDfsn7.png)
 
 Информация о продукте выводится в меню при запуске проекта. 
