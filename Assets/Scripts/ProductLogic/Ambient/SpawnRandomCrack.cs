@@ -4,9 +4,8 @@ public class SpawnRandomCrack : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int _chance;
     [SerializeField] private CrackChance[] _cracks;
-    
-    private Transform[] _positions;
 
+    private Transform[] _positions;
 
     private void Start()
     {
@@ -26,10 +25,8 @@ public class SpawnRandomCrack : MonoBehaviour
             totalChance += crackChance.Chance;
         }
 
-
         int randomNumber = Random.Range(0, totalChance);
         int cumulativeChance = 0;
-
 
         foreach (CrackChance crackChance in _cracks)
         {
@@ -37,7 +34,7 @@ public class SpawnRandomCrack : MonoBehaviour
             if (randomNumber < cumulativeChance)
             {
 
-                Instantiate(crackChance.Crack, _positions.PickRandomElement().position.AddY(0.001f), crackChance.Crack.transform.rotation);
+                CrackSpawner.Instance.EnqueueCrack(new CrackSpawnData(crackChance.Crack, _positions.PickRandomElement().position.AddY(0.007f)));
                 return;
             }
         }

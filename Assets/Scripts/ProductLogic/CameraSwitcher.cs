@@ -7,7 +7,7 @@ public sealed class CameraSwitcher : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("X"))
         {
             _mainCamera.enabled = !_mainCamera.enabled;
             _carCamera.enabled = !_mainCamera.enabled;

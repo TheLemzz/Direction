@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Windmill : MonoBehaviour
 {
-    private float _coefficent = 10;
+    private readonly float _coefficent = 10;
 
     private void Update()
     {

@@ -6,7 +6,8 @@ public sealed class SimulationStart : MonoBehaviour
 {
     [SerializeField] private Image _disableImage;
 
-    private float _startClipPlane;
+    private int _sceneIndex;
+
     private float _clipPlaneVelocity;
 
     private float _currentAlpha;
@@ -16,14 +17,13 @@ public sealed class SimulationStart : MonoBehaviour
 
     private void Start()
     {
-        _startClipPlane = Camera.main.farClipPlane;
         _currentAlpha = _disableImage.color.a;
     }
 
     public void OnClick()
     {
         _started = true;
-        Invoke(nameof(LoadScene), 2f);
+        Invoke(nameof(LoadScene), 1.8f);
     }
 
     private void Update()
@@ -35,9 +35,14 @@ public sealed class SimulationStart : MonoBehaviour
         _disableImage.color = new Color(_disableImage.color.r, _disableImage.color.g, _disableImage.color.b, _currentAlpha);
     }
 
+    public void SetSceneIndex(int index)
+    {
+        _sceneIndex = index;
+    }
+
     private void LoadScene()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(_sceneIndex - 1, LoadSceneMode.Single);
+        DynamicGI.UpdateEnvironment();
     }
 }

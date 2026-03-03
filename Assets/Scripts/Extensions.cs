@@ -73,6 +73,20 @@ public static class Extensions
         return enumerable[Random.Range(0, enumerable.Count())];
     }
 
+    /// <summary>
+    /// Delete bad symbols like ZWSP that comes from TextMeshPro.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string Sanitize(this string input)
+    {
+        if (string.IsNullOrEmpty(input)) return string.Empty;
+
+        return input.Replace("\u200B", "")
+                    .Replace("\uFEFF", "")
+                    .Trim();
+    }
+
     public static bool IsEmpty<T>(this IEnumerable<T> col) => !col.Any();
 
 

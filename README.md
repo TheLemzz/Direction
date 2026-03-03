@@ -8,7 +8,7 @@
 [![Unity](https://img.shields.io/badge/Unity-2022.3%2B-black?logo=unity)](https://unity.com/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![YOLOv11](https://img.shields.io/badge/YOLO-v11-FE0032)](https://docs.ultralytics.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache2.0-green.svg)](LICENSE)
 [![ZeroMQ](https://img.shields.io/badge/Messaging-ZeroMQ-orange)](https://zeromq.org/)
 
 **Преодолейте разрыв Sim2Real с помощью высокоточной, пиксельно-идеальной генерации датасетов.**
@@ -136,7 +136,7 @@ connector.send_event("OBJECT_DETECTED", {"class": "car", "confidence": 0.95})
 
 ## 📄 Лицензия
 
-Распространяется под лицензией MIT. Подробности в файле `LICENSE`.
+Распространяется под лицензией Apache2.0. Подробности в файле `LICENSE`.
 <div align="center">
 <img  src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif"  width="80">
 </div>

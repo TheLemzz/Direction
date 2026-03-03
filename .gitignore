@@ -16,6 +16,7 @@ Logs/
 *.csproj
 *.unityproj
 *.sln
+*.meta
 *.suo
 *.tmp
 *.user
