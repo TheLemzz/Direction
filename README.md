@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://i.imgur.com/BJWVVvC.jpeg" alt="Logo" width="80" height="80">
+<img src="https://i.imgur.com/dZ8LZoI.png" alt="Logo" width="115" height="115">
 
 # 👁️ Direction 
 ### Мощнейший конвейер генерации синтетических данных для компьютерного зрения
@@ -140,4 +140,5 @@ connector.send_event("OBJECT_DETECTED", {"class": "car", "confidence": 0.95})
 <div align="center">
 <img  src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif"  width="80">
 </div>
+
 
