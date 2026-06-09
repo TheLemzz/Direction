@@ -68,7 +68,6 @@ ExportedObj/
 *.booproj
 *.svd
 *.opendb
-*.txt
 *.log
 *.VC.db
 
